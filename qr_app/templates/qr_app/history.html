@@ -1,0 +1,33 @@
+{% extends 'qr_app/base.html' %}
+
+{% block content %}
+<h2>QR Code History</h2>
+{% if qr_codes %}
+    {% for qr in qr_codes %}
+    <div class="card">
+        <h3>UPI ID: {{ qr.upi_id }}</h3>
+        <p>Amount: ₹{{ qr.amount }}</p>
+        <p>Message: {{ qr.message }}</p>
+        <p>Generated on: {{ qr.created_at }}</p>
+        <div class="qr-grid">
+            <div class="qr-item">
+                <h4>PhonePe</h4>
+                <img src="{{ qr.phonepe_qr.url }}" alt="PhonePe QR Code">
+            </div>
+            <div class="qr-item">
+                <h4>Google Pay</h4>
+                <img src="{{ qr.gpay_qr.url }}" alt="Google Pay QR Code">
+            </div>
+            <div class="qr-item">
+                <h4>Paytm</h4>
+                <img src="{{ qr.paytm_qr.url }}" alt="Paytm QR Code">
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>No QR codes generated yet.</p>
+    </div>
+{% endif %}
+{% endblock %} 
