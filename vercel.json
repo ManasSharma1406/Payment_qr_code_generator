@@ -11,5 +11,8 @@
             "src": "/(.*)",
             "dest": "qr_generator/wsgi.py"
         }
-    ]
+    ],
+    "env": {
+        "WSGI_APPLICATION": "qr_generator.wsgi"
+    }
 } 
